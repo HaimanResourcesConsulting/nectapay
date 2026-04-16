@@ -1,4 +1,4 @@
-# Laravel NectaPay
+# Laravel NectaPay by [HRC](https://haimanresources.com)
 
 A reusable Laravel package for NectaPay virtual account provisioning, webhook handling, and payment processing.
 
