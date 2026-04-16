@@ -1,8 +1,8 @@
 <?php
 
-namespace HRC\NectaPay\Jobs;
+namespace HRC\NectaPay\Laravel\Jobs;
 
-use HRC\NectaPay\Services\NectaPayService;
+use HRC\NectaPay\Laravel\NectaPayService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Model;

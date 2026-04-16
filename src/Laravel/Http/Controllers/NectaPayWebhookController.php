@@ -1,12 +1,12 @@
 <?php
 
-namespace HRC\NectaPay\Http\Controllers;
+namespace HRC\NectaPay\Laravel\Http\Controllers;
 
-use HRC\NectaPay\Contracts\PaymentHandler;
-use HRC\NectaPay\Exceptions\WebhookEarlyExitException;
-use HRC\NectaPay\Models\VirtualAccount;
-use HRC\NectaPay\Models\WebhookLog;
-use HRC\NectaPay\Services\NectaPayService;
+use HRC\NectaPay\Laravel\Contracts\PaymentHandler;
+use HRC\NectaPay\Laravel\Exceptions\WebhookEarlyExitException;
+use HRC\NectaPay\Laravel\Models\VirtualAccount;
+use HRC\NectaPay\Laravel\Models\WebhookLog;
+use HRC\NectaPay\Laravel\NectaPayService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -171,7 +171,7 @@ class NectaPayWebhookController extends Controller
 
     private function processPayment(WebhookLog $webhookLog, $owner, float $amountPaid, array $payload): JsonResponse
     {
-        $systemFee = config('nectapay.system_fee', 200);
+        $systemFee = $this->nectaPay->getClient()->getConfig()->systemFee;
         $netAmount = max(0, $amountPaid - $systemFee);
 
         $metadata = [
