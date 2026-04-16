@@ -1,6 +1,6 @@
 # Laravel NectaPay by [HRC](https://haimanresources.com)
 
-A reusable Laravel package for NectaPay virtual account provisioning, webhook handling, and payment processing.
+A reusable Laravel package by [Haiman Resources Consulting](https://haimanresources.com) for NectaPay virtual account provisioning, webhook handling, and payment processing.
 
 ## Installation
 
