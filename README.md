@@ -73,6 +73,11 @@ $client = new NectaPayClient(
 );
 
 // 3. Use it
+
+// Initiate a dynamic virtual account for a single transaction
+$transfer = $client->initiateTransfer(1200.00, 'tx_unique_123', 'Order #123');
+// Returns: account_number, bank_name, expires_in_minutes, etc.
+
 $account = $client->createStaticAccount('John Doe - MYAPP', 'myapp_owner_123');
 $result = $client->verifyTransaction('TXN_123456');
 $isValid = $client->validateWebhookHash($webhookPayload);
@@ -247,6 +252,15 @@ php artisan nectapay:provision-accounts
 
 # Dry run
 php artisan nectapay:provision-accounts --dry-run
+```
+
+### Initiate a Dynamic Transfer (Laravel)
+
+```php
+$transfer = NectaPay::initiateTransfer(1200.00, 'tx_unique_123', 'Order #123');
+// $transfer['account_number']    — temporary account to pay into
+// $transfer['bank_name']         — bank name
+// $transfer['expires_in_minutes'] — time before the account expires
 ```
 
 ### Verify a Transaction (Laravel)

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static string getAuthToken()
+ * @method static array initiateTransfer(float $amount, string $transactionId, string $description = '')
  * @method static \HRC\NectaPay\Laravel\Models\VirtualAccount createStaticAccount(\Illuminate\Database\Eloquent\Model $owner)
  * @method static array createBatchAccounts(\Illuminate\Support\Collection $owners)
  * @method static array verifyTransaction(string $transactionId)

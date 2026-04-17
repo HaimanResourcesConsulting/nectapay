@@ -64,6 +64,37 @@ class NectaPayClient
     }
 
     /**
+     * Initiate a dynamic virtual account transfer.
+     *
+     * @param  float   $amount         Exact amount expected
+     * @param  string  $transactionId  Unique transaction reference
+     * @param  string  $description    Narration / description
+     * @return array   API response data (account_number, bank_name, expires_in_minutes, etc.)
+     */
+    public function initiateTransfer(float $amount, string $transactionId, string $description = ''): array
+    {
+        $response = $this->authenticatedPost('/initiate_transfer', [
+            'amount' => $amount,
+            'description' => $description,
+            'transaction_id' => $transactionId,
+            'merchant_id' => $this->config->merchantId,
+        ]);
+
+        if ($response['status'] < 200 || $response['status'] >= 300) {
+            $body = json_encode($response['body']);
+            $this->logger->error('NectaPay: Failed to initiate transfer', [
+                'transaction_id' => $transactionId,
+                'amount' => $amount,
+                'status' => $response['status'],
+                'body' => $body,
+            ]);
+            throw NectaPayException::transferFailed($transactionId, $body);
+        }
+
+        return $response['body']['data'] ?? $response['body'];
+    }
+
+    /**
      * Create a static virtual account.
      *
      * @param  string  $accountName  Display name for the account

@@ -114,6 +114,19 @@ class NectaPayService
         return $accounts;
     }
 
+    /**
+     * Initiate a dynamic virtual account transfer (single transaction).
+     *
+     * @param  float   $amount         Exact amount expected
+     * @param  string  $transactionId  Unique transaction reference
+     * @param  string  $description    Narration / description
+     * @return array   Dynamic account details (account_number, bank_name, expires_in_minutes, etc.)
+     */
+    public function initiateTransfer(float $amount, string $transactionId, string $description = ''): array
+    {
+        return $this->client->initiateTransfer($amount, $transactionId, $description);
+    }
+
     public function verifyTransaction(string $transactionId): array
     {
         return $this->client->verifyTransaction($transactionId);
