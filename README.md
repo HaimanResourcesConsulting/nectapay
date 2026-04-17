@@ -1,6 +1,6 @@
 # NectaPay PHP SDK by [HRC](https://haimanresources.com)
 
-A framework-agnostic PHP package by [Haiman Resources Consulting](https://haimanresources.com) for NectaPay virtual account provisioning, webhook handling, and payment processing. Works with Laravel, Symfony, CodeIgniter, native PHP, and any PHP framework.
+A framework-agnostic PHP package by [Haiman Resources Consulting](https://haimanresources.com) for NectaPay virtual account provisioning, webhook handling, and payment processing. Works with Laravel, Symfony, CodeIgniter, native PHP, and any PHP framework..
 
 ## Installation
 
