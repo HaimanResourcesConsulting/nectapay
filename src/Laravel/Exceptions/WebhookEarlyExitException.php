@@ -1,6 +1,6 @@
 <?php
 
-namespace HRC\NectaPay\Exceptions;
+namespace HRC\NectaPay\Laravel\Exceptions;
 
 use Illuminate\Http\JsonResponse;
 use RuntimeException;

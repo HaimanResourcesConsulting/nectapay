@@ -1,6 +1,6 @@
 {
-    "name": "hrc/laravel-nectapay",
-    "description": "Laravel package for NectaPay virtual account provisioning, webhook handling, and payment processing.",
+    "name": "hrc/nectapay",
+    "description": "Framework-agnostic PHP package for NectaPay virtual account provisioning, webhook handling, and payment processing.",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -11,17 +11,21 @@
     "extra": {
         "laravel": {
             "providers": [
-                "HRC\\NectaPay\\NectaPayServiceProvider"
+                "HRC\\NectaPay\\Laravel\\NectaPayServiceProvider"
             ]
         }
     },
     "require": {
         "php": "^8.2",
-        "illuminate/support": "^11.0|^12.0",
-        "illuminate/http": "^11.0|^12.0",
-        "illuminate/database": "^11.0|^12.0",
-        "illuminate/queue": "^11.0|^12.0",
-        "illuminate/console": "^11.0|^12.0"
+        "psr/log": "^2.0|^3.0"
+    },
+    "suggest": {
+        "guzzlehttp/guzzle": "Required for the default Guzzle HTTP client adapter (^7.0)",
+        "illuminate/support": "Required for Laravel integration (^11.0|^12.0)",
+        "illuminate/http": "Required for Laravel HTTP client adapter (^11.0|^12.0)",
+        "illuminate/database": "Required for Laravel Eloquent models (^11.0|^12.0)",
+        "illuminate/queue": "Required for Laravel queue jobs (^11.0|^12.0)",
+        "illuminate/console": "Required for Laravel artisan commands (^11.0|^12.0)"
     },
     "minimum-stability": "stable"
 }

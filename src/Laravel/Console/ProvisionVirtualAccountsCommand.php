@@ -1,9 +1,9 @@
 <?php
 
-namespace HRC\NectaPay\Console;
+namespace HRC\NectaPay\Laravel\Console;
 
-use HRC\NectaPay\Models\VirtualAccount;
-use HRC\NectaPay\Services\NectaPayService;
+use HRC\NectaPay\Laravel\Models\VirtualAccount;
+use HRC\NectaPay\Laravel\NectaPayService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
@@ -75,7 +75,6 @@ class ProvisionVirtualAccountsCommand extends Command
         $dryRun = $this->option('dry-run');
         $ownerModel = config('nectapay.owner_model');
 
-        // Get owners without a virtual account — assumes the model has an `active()` scope
         $query = $ownerModel::query();
         if (method_exists($ownerModel, 'scopeActive')) {
             $query->active();
@@ -139,7 +138,6 @@ class ProvisionVirtualAccountsCommand extends Command
                     $created++;
                 }
             } catch (\Throwable $e) {
-                // Fallback: try one-by-one if batch fails
                 foreach ($owners as $owner) {
                     try {
                         $nectaPay->createStaticAccount($owner);

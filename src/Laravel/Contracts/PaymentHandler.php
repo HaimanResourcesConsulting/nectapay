@@ -1,6 +1,6 @@
 <?php
 
-namespace HRC\NectaPay\Contracts;
+namespace HRC\NectaPay\Laravel\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
 

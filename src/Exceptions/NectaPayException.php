@@ -16,6 +16,11 @@ class NectaPayException extends RuntimeException
         return new self('NectaPay authentication response missing token');
     }
 
+    public static function transferFailed(string $transactionId, string $body): self
+    {
+        return new self("NectaPay: Failed to initiate transfer {$transactionId}: {$body}");
+    }
+
     public static function accountCreationFailed(string $ownerId, string $body): self
     {
         return new self("NectaPay: Failed to create virtual account for owner {$ownerId}: {$body}");
